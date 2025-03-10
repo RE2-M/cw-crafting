@@ -1,7 +1,7 @@
 Config = {}
 Config.Debug = false
 
-Config.oxInv = true -- set this to ox if you have ox_inventory
+Config.oxInv = false -- set this to ox if you have ox_inventory
 
 --  DISABLE OX LIB IN FXMANIFEST IF THIS IS FALSE:
 Config.oxLib = true -- set this to ox if you have ox_lib !!! MAKE SURE OX LIB IS ADDED TO SHARED_SCRIPTS IN FXMANIFEST!!
@@ -10,10 +10,10 @@ Config.useOxTarget = true -- Set to true if you use ox-target. If this is false 
 Config.UseLocalImages = false -- set this to true if you want to use local images rather than automatic. Put the images for the recipes and ingredients in the 'images' folder next to the blueprint.png
 Config.ReopenCraftingWhenFinished = false -- if true the script will re-open the crafting when it's done
 
-Config.ItemName = "cw_blueprint" -- Name of the item in your items.lua
-Config.PlayersTableName = 'characters' -- 'players' for qb/qbox, 'characters' for ox. Something else for esx probably
-Config.PlayerDbIdentifier = 'stateId' -- 'citizenId' for qb/qbox, 'stateId' for ox, Something else for ex probably
-Config.UseCWRepForCraftingSkill = false -- Set to true if you want to use cw-rep for skill instead of qbs metadata
+Config.ItemName = "blueprint" -- Name of the item in your items.lua
+Config.PlayersTableName = 'players' -- 'players' for qb/qbox, 'characters' for ox. Something else for esx probably
+Config.PlayerDbIdentifier = 'citizenId' -- 'citizenId' for qb/qbox, 'stateId' for ox, Something else for ex probably
+Config.UseCWRepForCraftingSkill = true -- Set to true if you want to use cw-rep for skill instead of qbs metadata
 -- The following all require cw-rep to be enabled:
 Config.CraftingSkillName = 'crafting' -- Make sure this matches the crafting skill name in your cw-rep config
 Config.CraftingSkillLabel = '"Crafting Skill"' -- Default name for the crafting skill
@@ -104,29 +104,28 @@ Config.CraftingTables = {
 	['basic'] = {
 		title = "Crafting",
 		animation = { dict = 'anim@amb@business@coc@coc_unpack_cut@', anim = 'fullcut_cycle_v7_cokecutter'},
-		objects = { 'ex_prop_ex_toolchest_01', 'prop_toolchest_04', 'prop_toolchest_05'}, 
+		objects = { 'p_boxmedmedical01x', 'prop_toolchest_04', 'prop_toolchest_05'}, 
 		locations = {  vector3(939.4, -1554.36, 30.58), },
 		skipPlaceObjectOnGroundProperly = true -- Defaults to false, if set to true then object wont be placed onto ground. Useful for placing items on tables etc
 	},
-	['mechanic'] = {
-		title = "Mechanic Crafting",
-		objects = { 'prop_toolchest_05' },
-		icon = "car-wrench", -- optional. Defaults to 'wrench'
+	['medic'] = {
+		title = "Medical Crafting",
+		objects = { 'p_chestmedice01x','p_boxmedmedical01x','s_lootablemedicinecrate' },
+		icon = "medical-bag", -- optional. Defaults to 'wrench'
 		jobType = { ['mechanic'] = 1 }, -- NOTE: This checks TYPES not name. A new qb thing. It's good. Use it.
 		locations = { vector3(948.81, -1552.64, 30.59), }, -- BOXZONE: If you add one of these objects (locations = ...) it will spawn boxzones
 		spawnTable = { { coords = vector4(794.49, -2613.63, 87.97, 2.4), prop = 'ex_prop_ex_toolchest_01' } } -- SPAWNS TABLE: the spawnTable field holds a list of several tables with prop and location. If these are added it will SPAWN a table that's interactable
+	},
+	['food'] = {
+		title = "Food Crafting",
+		objects = {'p_campfirecombined01x','p_campfirecombined02x','p_campfirecombined03x','s_campfirecombined01x','s_campfireset01x','s_cul_cookfire01x','s_hobo_cookfire01x'},
+		icon = "food-fork-drink",
 	},
 	['guns'] = {
 		title = "Weapon Crafting",
 		craftingLevelText = "Guns crafting level:",
 		icon = "pistol",
 		objects = { 'gr_prop_gr_bench_01a' }
-	},
-	['ballasguns'] = {
-		title = "Weapon Crafting For Ballas",
-		icon = "pistol",
-		gang = "ballas",
-		spawnTable = { { coords = vector4(100.52, -1968.95, 20.91, 352.84), prop='gr_prop_gr_bench_02a' }}
 	},
 }
 

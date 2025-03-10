@@ -8,7 +8,7 @@ Blueprints are items that have a unique value tied to them. By default you have 
 
 ### ❗❗ YOU CAN NOT SPAWN BLUEPRINT ITEMS WITH /giveitem OR ANY MENU! SEE COMMANDS ❗❗
 
-Cw-crafting now supports QBOX, OX-core,QB-core and (possibly) ESX (as long as you use OX inventory) CW-rep is required for skill/rep use with OX and ESX
+Cw-crafting now supports QBOX, OX-core,QB-core,RSG-core(REDM) and (possibly) ESX (as long as you use OX inventory) CW-rep is required for skill/rep use with OX and ESX
 
 ### THIS SCRIPT REQUIRES YOU TO READ THIS README AND GO THROUGH THE CONFIG. READ THROUGH IT WELL BEFORE YOU ASK QUESTIONS 🐱‍🐉
 
@@ -29,7 +29,7 @@ Cw-crafting now supports QBOX, OX-core,QB-core and (possibly) ESX (as long as yo
 - Easy addition of new recipes
 - Exports to give blueprints (through loot for example)
 - A UI made in VUE
-- Support for OX and QB inventory with limited support for other inventories (through QB)
+- Support for OX and QB inventory and RSG inventory with limited support for other inventories (through QB)
 - Crafting skill reqirements
 
 # Developed by Coffeelot and Wuggie
@@ -39,10 +39,9 @@ Cw-crafting now supports QBOX, OX-core,QB-core and (possibly) ESX (as long as yo
 
 <a href="https://discord.gg/FJY4mtjaKr"> <img src="https://media.discordapp.net/attachments/1202695794537537568/1285652389080334337/discord.png?ex=66eb0c97&is=66e9bb17&hm=b1b2c17715f169f57cf646bb9785b0bf833b2e4037ef47609100ec8e902371df&=&format=webp" width="200"></a>
 
-[![Buy Us a Coffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://www.buymeacoffee.com/cwscriptbois )
 # Setup 🔧
 ## Add the blueprint item
-### QB
+### QB and RSG
 Items to add to qb-core>shared>items.lua 
 ```lua
 	-- CW crafting
@@ -246,4 +245,3 @@ The very bacis for building and installing it are:
 
 # Sponsored Features
 ## Per-recipe skill requirements
-@Knuffelpanda | [KnuffelpandaTV Clubhouse](https://discord.com/invite/MpVCTDgUyb)
