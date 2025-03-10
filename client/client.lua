@@ -383,7 +383,7 @@ local function setCraftingOpen(openCrafting, i)
         end
         SetNuiFocus(openCrafting, openCrafting)
         currentTableType = i;
-        StartScreenEffect('MenuMGIn', 1, true)
+        -- StartScreenEffect('MenuMGIn', 1, true)
         SendNUIMessage({
             action = "cwCrafting",
             toggle = openCrafting,
@@ -396,7 +396,7 @@ local function setCraftingOpen(openCrafting, i)
         SetNuiFocus(openCrafting, openCrafting)
         lastTableType = currentTableType
         currentTableType = nil;
-        StopScreenEffect('MenuMGIn')
+        -- StopScreenEffect('MenuMGIn')
         SendNUIMessage({
             action = "cwCrafting",
             toggle = openCrafting,

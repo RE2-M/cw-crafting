@@ -1,7 +1,7 @@
 <template>
   <div class="ui-container">
     <div class="screen-container" v-if="globalStore.recipes">
-      <v-card border class="d-flex flex-column main-card" rounded="lg">
+      <v-card class="d-flex flex-column main-card background" rounded="lg">
         <div class="top">
           <v-card
             width="100%"
@@ -114,6 +114,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  
 }
 
 .app-container {
@@ -125,5 +126,10 @@ h2 {
   height: 460px;
 }
 
-
+.background{
+  background-color: #ffffff00;
+  background-image: url('/background.png');
+  background-size: 100% 100%;
+  opacity: 90%;
+}
 </style>

@@ -58,7 +58,7 @@ function addItem(src, itemName, amount, metadata)
             exports.ox_inventory:CustomDrop("cw-craft", { item }, coords)
         end
     else
-        exports['qb-inventory']:AddItem(src, itemName, amount, false, metadata)
+        exports['rsg-inventory']:AddItem(src, itemName, amount, false, metadata)
     end
     
 end
@@ -69,7 +69,7 @@ function removeItem(src, itemName, amount)
     else
         local Player = RSGCore.Functions.GetPlayer(src)
         if not Player then return false end
-        return exports['qb-inventory']:RemoveItem(src, itemName, amount)
+        return exports['rsg-inventory']:RemoveItem(src, itemName, amount)
     end
 end
 
@@ -79,7 +79,7 @@ function removeItemBySlot(src, itemName, amount, slot)
     else
         local Player = RSGCore.Functions.GetPlayer(src)
         if not Player then return false end
-        return exports['qb-inventory']:RemoveItem(src, itemName, amount, slot)
+        return exports['rsg-inventory']:RemoveItem(src, itemName, amount, slot)
     end
 end
 

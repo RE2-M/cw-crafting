@@ -23,7 +23,7 @@ export const getImageLink = (
     if (store.settings.oxInventory) {
       return `nui://ox_inventory/web/images/${key}.png`;
     } else {
-      return `nui://qb-inventory/html/images/${key}`;
+      return `nui://rsg-inventory/html/images/${key}.png`;
     }
   }
 };

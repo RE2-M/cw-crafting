@@ -73,14 +73,10 @@ function notify(text, type)
         return
     end
 
-    if Config.OxLibNotify then
-        lib.notify({
-            title = text,
-            type = type,
-        })
-    else
-        RSGCore.Functions.Notify(text, type)
-    end
+    lib.notify({
+        title = text,
+        type = type,
+    })
 
 end
 

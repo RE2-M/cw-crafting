@@ -38,14 +38,7 @@ end
 
 
 Config.Blueprints = { -- rarity is 1-5, chance is 0.0-1.0 with lower numbers lowering chance of getting the item
-	['aluminumoxide_pro'] = { label="Aluminum Oxide Optimized", rarity = 3, type='legal' },
-	['repairkit'] = { label="Repair Kit", rarity = 2,  type='legal' },
-	['screwdriverset'] = { rarity = 2,  type='legal' },
-	['electronickit'] = { rarity = 2,  type='legal' },
-	['radioscanner'] = { rarity = 3, type='illegal' },
-	['gatecrack'] = { rarity = 4,  type='illegal' },
-	['armor'] = { rarity = 5, type='illegal'},
-	['Ap Pistol'] = { rarity = 5, type='illegal' },
+	['NavyRevolverBlueprint'] = { rarity = 5, type='illegal'},
 }
 
 Config.DefaultFailChance = 80
@@ -55,46 +48,81 @@ Config.LearningTime = 2500 -- time it takes to learn BP in milliseconds
 
 Config.Recipes = {
 	['lockpick'] = {
-		category = "Tools",
+		category = "basic",
 		toItems = {
 			lockpick = 2,
 		},
-		materials = { metalscrap = 12, plastic = 12 },
+		materials = { iron_bar = 2, copper_bar = 1 },
 		craftingTime= 3000,
 		craftingSkill= 10,
 		customSkillGain = 5,
+		skillName='crafting',
+		tables ={"basic"},
 		keepMaterials = { plastic = true }
 	},
-	['breakdown_phone'] = {
-		label = 'Breakdown phone',
-		type = "breakdown",
-		materials = {
-			phone = 1
-		},
+	['weapon_revolver_navy'] = {
+		category = "weapon",
 		toItems = {
-			aluminum = 14,
-			glass = 21,
-			plastic = 10
+			weapon_revolver_navy = 1,
 		},
-		maxCraft = 10,
-		category = 'Breakdown',
-		craftingTime= 4000,
+		materials = { iron_bar = 1, copper_bar = 1,silver_bar = 1,gold_bar = 1 },
+		craftingTime= 10000,
+		craftingSkill= 10,
+		tables ={"basic"},
+		maxCraft = 1,
+		customSkillGain = 5,
+		blueprint = 'NavyRevolverBlueprint',
 	},
-	["weapon_appistol"] = {
-		label = "AP Pistol",
+	['gold_bar'] = {
+		category = "blacksmith",
 		toItems = {
-			WEAPON_APPISTOL = 1,
+			gold_bar = 1,
 		},
-		materials = {
-			["metalscrap"] = 360,
-		},
-		category = 'Weapons',
-		tables = {'guns'},
-		blueprint = 'Ap Pistol',
-		craftingSkill= 200,
-		skillName = 'gun_crafting', -- optional. If set, will override what skill is required. ONLY WORKS WITH CW-REP!!!
-		metadata = { registered= false } -- If set, will write info/metadata on all items in toItems
+		materials = { gold_ore = 5, water = 1 },
+		craftingTime= 3000,
+		skillName='blacksmith',
+		customSkillGain = 5,
+		tables ={"blacksmith"},
+		keepMaterials = { water = true }
 	},
+	
+	['iron_bar'] = {
+		category = "blacksmith",
+		toItems = {
+			iron_bar = 1,
+		},
+		materials = { iron_ore = 5, water = 1 },
+		craftingTime= 3000,
+		skillName='blacksmith',
+		customSkillGain = 5,
+		tables ={"blacksmith"},
+		keepMaterials = { water = true }
+	},
+	['silver_bar'] = {
+		category = "blacksmith",
+		toItems = {
+			silver_bar = 1,
+		},
+		materials = { silver_ore = 5, water = 1 },
+		craftingTime= 3000,
+		skillName='blacksmith',
+		customSkillGain = 5,
+		tables ={"blacksmith"},
+		keepMaterials = { water = true }
+	},
+	['copper_bar'] = {
+		category = "blacksmith",
+		toItems = {
+			copper_bar = 1,
+		},
+		materials = { copper_ore = 5, water = 1 },
+		craftingTime= 3000,
+		skillName='blacksmith',
+		customSkillGain = 5,
+		tables ={"blacksmith"},
+		keepMaterials = { water = true }
+	},
+	
 }
 
 
@@ -104,8 +132,18 @@ Config.CraftingTables = {
 	['basic'] = {
 		title = "Crafting",
 		animation = { dict = 'anim@amb@business@coc@coc_unpack_cut@', anim = 'fullcut_cycle_v7_cokecutter'},
-		objects = { 'p_boxmedmedical01x', 'prop_toolchest_04', 'prop_toolchest_05'}, 
-		locations = {  vector3(939.4, -1554.36, 30.58), },
+		objects = { 'mp005_s_posse_ammotable03x'}, 
+		-- locations = {  vector3(2941.11, 1267.26, 44.59), },
+		spawnTable = { { coords = vector4(2008.08, 706.73, 172.73, 345.22), prop = 'mp005_s_posse_ammotable03x' } },
+		skipPlaceObjectOnGroundProperly = true -- Defaults to false, if set to true then object wont be placed onto ground. Useful for placing items on tables etc
+	},
+
+	['blacksmith'] = {
+		title = "BlackSmith Crafting",
+		animation = { dict = 'anim@amb@business@coc@coc_unpack_cut@', anim = 'fullcut_cycle_v7_cokecutter'},
+		objects = { 'p_baseburner01x'}, 
+		-- locations = {  vector3(2941.11, 1267.26, 44.59), },
+		spawnTable = { { coords = vector4(2004.85, 704.65, 172.66, 355.34), prop = 'p_baseburner01x' } },
 		skipPlaceObjectOnGroundProperly = true -- Defaults to false, if set to true then object wont be placed onto ground. Useful for placing items on tables etc
 	},
 	['medic'] = {
@@ -121,27 +159,8 @@ Config.CraftingTables = {
 		objects = {'p_campfirecombined01x','p_campfirecombined02x','p_campfirecombined03x','s_campfirecombined01x','s_campfireset01x','s_cul_cookfire01x','s_hobo_cookfire01x'},
 		icon = "food-fork-drink",
 	},
-	['guns'] = {
-		title = "Weapon Crafting",
-		craftingLevelText = "Guns crafting level:",
-		icon = "pistol",
-		objects = { 'gr_prop_gr_bench_01a' }
-	},
 }
 
 Config.UseSundownUtils = false
 
-Config.BlueprintDudes = { -- SET THIS TO Config.BlueprintDudes = nil TO DISABLE
-	{
-		model = 'cs_nigel',
-		type = 'legal',
-		coords = vector4(-1647.53, 248.17, 61.97, 118.29),
-		animation = 'WORLD_HUMAN_SEAT_LEDGE_EATING',
-	},
-	{
-		model = 'u_m_m_blane',
-		type = 'illegal',
-		coords = vector4(1641.73, 3731.21, 35.07, 6.15),
-		animation = 'WORLD_HUMAN_DRINKING',
-	}
-}
+Config.BlueprintDudes = nil
